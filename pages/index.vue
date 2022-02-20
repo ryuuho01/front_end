@@ -145,10 +145,10 @@ export default Vue.extend({
     }
   },
   async fetch() {
-    this.$axios
+    await this.$axios
       .get(this.$config.baseURL+"/api/area")
       .then((response) => (this.areaCurrent = response.data.data));
-    this.$axios
+    await this.$axios
       .get(this.$config.baseURL+"/api/genre")
       .then((response) => (this.genreCurrent = response.data.data));
     await this.$axios
