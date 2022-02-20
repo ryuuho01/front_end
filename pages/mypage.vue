@@ -276,7 +276,7 @@ export default Vue.extend({
 
         display: false,
 
-        QR_url: "https://api.qrserver.com/v1/create-qr-code/?data="+"http://localhost:3000"+"/reservation_check/"
+        QR_url: "https://api.qrserver.com/v1/create-qr-code/?data="+"http://172.31.0.226"+"/reservation_check/"
       }
   },
 
