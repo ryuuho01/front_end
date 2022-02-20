@@ -8,7 +8,7 @@ export default {
   },
 
   // Target: https://go.nuxtjs.dev/config-target
-  target: 'static',
+  target: 'server',
 
   // Global page headers: https://go.nuxtjs.dev/config-head
   head: {
@@ -63,7 +63,7 @@ export default {
   ],
   proxy: {
     '/api/': {
-      target: 'http://172.31.29.77',
+      target: 'http://35.77.78.191',
       changeOrigin: true,
       secure: false
     },
@@ -87,7 +87,7 @@ export default {
     strategies: {
       'laravelJWT': {
         provider: 'laravel/jwt',
-        url: 'http://172.31.29.77',
+        url: 'http://35.77.78.191',
         token: {
           maxAge: 60 * 60
         },
