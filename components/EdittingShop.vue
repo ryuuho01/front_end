@@ -168,7 +168,7 @@ export default Vue.extend({
         reader.readAsDataURL(file);
         const picresData = await this.$axios.get(this.$config.baseURL+"/api/shop");
         for(let i =0; i < picresData.data.data.length; i++) {
-          if(picresData.data.data[i]["pic_path"] === "http://127.0.0.1:8000"+"/storage/"+file.name) {
+          if(picresData.data.data[i]["pic_path"] === "https://advance-pic-backet.s3.ap-northeast-1.amazonaws.com/"+file.name) {
             alert("同じファイル名の画像が存在します。上書きする場合はそのまま、上書きしない場合はファイル名を変更して下さい。");
             break
           };

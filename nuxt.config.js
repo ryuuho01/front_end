@@ -63,7 +63,7 @@ export default {
   ],
   proxy: {
     '/api/': {
-      target: 'http://127.0.0.1:8000',
+      target: 'http://172.31.29.77',
       changeOrigin: true,
       secure: false
     },
@@ -87,7 +87,7 @@ export default {
     strategies: {
       'laravelJWT': {
         provider: 'laravel/jwt',
-        url: 'http://localhost:8000',
+        url: 'http://172.31.29.77',
         token: {
           maxAge: 60 * 60
         },
