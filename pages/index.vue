@@ -175,6 +175,39 @@ export default Vue.extend({
     this.display = true;
   },
 
+  async mouted() {
+    await this.$axios
+      .get(this.$config.baseURL+"/api/area")
+      .then((response) => (this.areaCurrent = response.data.data));
+    await this.$axios
+      .get(this.$config.baseURL+"/api/genre")
+      .then((response) => (this.genreCurrent = response.data.data));
+    await this.$axios
+      .get(this.$config.baseURL+"/api/shop")
+      .then((response) => (this.shopCurrent = response.data.data));
+
+    if ((this as any).$auth.loggedIn) {
+      this.userId = (this as any).$auth.user.id;
+
+      for(let i=0; i < this.shopCurrent.length; i++) {
+        let count = 0;
+        for(let j=0; j < (this as any).shopCurrent[i]["favorites"].length; j++) {
+          if((this as any).shopCurrent[i]["favorites"][j]["user_id"] == this.userId && (this as any).shopCurrent[i]["favorites"][j]["favorite"] == 1) {
+            count++;
+          }
+        }
+        if(count != 0){
+          (this as any).shopCurrent[i]["favorites"] = 1;
+        } else {
+          (this as any).shopCurrent[i]["favorites"] = 0;
+        }
+      }
+    }
+    this.display = true;
+  },
+
+  },
+
   computed: {
     filteredShopcards: function() {
       return (this as any).filterShopcards();
