@@ -179,7 +179,7 @@ export default Vue.extend({
 .send-window {
   background: white;
   width: 500px;
-  margin: 30px 0px;
+  margin: 30px 5px;
   border: none;
   border-radius: 5px;
   box-shadow: 2px 2px 2px rgb(171, 171, 171);
@@ -279,7 +279,7 @@ export default Vue.extend({
   .flex {
   // display: flex;
   justify-content: center;
-  flex-direction: column;
+  // flex-direction: column;
   // flex-wrap: wrap;
   margin: auto;
 }
