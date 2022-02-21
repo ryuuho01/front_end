@@ -10,7 +10,7 @@
       <SendingEmail />
     </div>
     <div class="reservation-box">
-      <h2>予約受付状況</h2>
+      <h2 v-if="display === true && $auth.user !== null && $auth.user.authority === 1 && $auth.user.shop_id !== null">予約受付状況</h2>
       <div v-if="display === true && $auth.user !== null && $auth.user.authority === 1 && $auth.user.shop_id !== null" class="left-side">
         <div v-if="reservationsCurrent[0] === undefined && display === true" class="nothing">
           予約受付はありません
