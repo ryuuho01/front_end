@@ -218,7 +218,7 @@ export default Vue.extend({
       await this.$axios.get(this.$config.baseURL+"/api/auth/user");
       // this.get_allInfo();
       // location.href = this.$config.baseURL+"/manage";
-      this.$router.push('/');
+      location.href='/manage';
       alert("店舗情報を登録しました");
       } catch(e:any) {
         if (e.response.data.errors.pic_path !== undefined){

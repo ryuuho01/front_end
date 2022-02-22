@@ -106,10 +106,22 @@ export default Vue.extend({
       display: false,
     }
   },
-  fetch() {
-    this.get_allInfo();
-    this.get_areaCurrent();
-    this.get_genreCurrent();
+  async fetch() {
+    await this.$axios
+      .get(this.$config.baseURL+"/api/user/"+(this as any).$auth.user.id)
+      .then((response) => (this.shopInfo = response.data.data.shop));
+      this.shop_name = (this.shopInfo as any).shop_name;
+      this.description = (this.shopInfo as any).description;
+      this.get_vModelarea();
+      this.get_vModelgenre();
+    await this.$axios
+      .get(this.$config.baseURL+"/api/area")
+      .then((response) => (this.areaCurrent = response.data.data));
+      this.areaCurrent.splice((this.shopInfo as any).area_id-1, 1);
+    await this.$axios
+      .get(this.$config.baseURL+"/api/genre")
+      .then((response) => (this.genreCurrent = response.data.data));
+      this.genreCurrent.splice((this.shopInfo as any).genre_id-1, 1);
   },
   mounted() {
     this.get_allInfo();
